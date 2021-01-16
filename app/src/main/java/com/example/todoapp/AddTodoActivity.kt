@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.RadioGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_todo.*
 import kotlinx.android.synthetic.main.todo_item_view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddTodoActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     private var todoDatabase: Tododb? = null
-    private var priority = 1
+    private var priority = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +23,13 @@ class AddTodoActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener 
 
         todoDatabase = Tododb.getInstance(this)
         radioGroup.setOnCheckedChangeListener(this)
-
+        val date=intent.getStringExtra("date")
         val title = intent.getStringExtra("title")
+
+
         if (title == null || title == ""){
             add_btn.setOnClickListener{
+
                 val todo = Todo(title_et.text.toString(),priority,0,date_et.text.toString())
                 todo.date= date_et.text.toString()
                 todoDatabase!!.getTodoDao().saveTodo(todo)
@@ -32,13 +38,15 @@ class AddTodoActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener 
         }else{
             add_btn.text= getString(R.string.update)
             val tId = intent.getIntExtra("id", 0)
-            title_et.setText(title)
+                title_et.setText(title)
+                date_et.setText(date)
             add_btn.setOnClickListener {
                 val todo = Todo(title_et.text.toString(), priority,tId,date_et.text.toString())
-                todo.date = date_et.text.toString()
+                todo.date= date_et.text.toString()
                 todoDatabase!!.getTodoDao().updateTodo(todo)
                 finish()
             }
+
         }
     }
 

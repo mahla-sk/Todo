@@ -12,4 +12,5 @@ class Todo(
     @ColumnInfo(name = "todo_checking")
     var checking: Int = 0,
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
-    var date: String = "")
+    @ColumnInfo(name = "todo_date")
+    var date: String="")

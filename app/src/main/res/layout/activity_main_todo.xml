@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2296F3"
     tools:context=".MainTodoActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,5 +29,32 @@
         app:layout_constraintVertical_bias="0.976"
         app:srcCompat="@drawable/ic_add"
         tools:ignore="VectorDrawableCompat" />
+
+    <EditText
+        android:id="@+id/srch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="search.."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todo_rv"
+        app:layout_constraintVertical_bias="0.27" />
+
+    <ImageView
+        android:id="@+id/srchbtn"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
+        android:background="#2196F3"
+        app:layout_constraintBottom_toBottomOf="@+id/srch"
+        app:layout_constraintEnd_toEndOf="@+id/srch"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/srch"
+        app:layout_constraintTop_toTopOf="@+id/srch"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_search_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
